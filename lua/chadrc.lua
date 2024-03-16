@@ -46,7 +46,7 @@ M.ui = {
       "                                                                                                   ",
     },
   },
-  -- theme_toggle = { "rosepine", "one_light" },
+  -- theme_toggle = { "flexoki", "one_light" },
 
   hl_override = highlights.override,
   hl_add = highlights.add,

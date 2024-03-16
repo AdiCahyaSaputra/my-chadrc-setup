@@ -77,18 +77,18 @@ map({ "n", "t" }, "<A-i>", function()
   }
 end, { desc = "Terminal Toggle Horizontal term" })
 
--- map("t", "<C-k>", [[<C-\><C-N><C-w>k]], {
---   desc = "Switch to up windows  in terminal mode",
--- })
---
--- map("t", "<C-j>", [[<C-\><C-N><C-w>j]], {
---   desc = "Switch to down windows  in terminal mode",
--- })
---
--- map("t", "<C-h>", [[<C-\><C-N><C-w>h]], {
---   desc = "Switch to left windows in terminal mode",
--- })
---
--- map("t", "<C-l>", [[<C-\><C-N><C-w>l]], {
---   desc = "Switch to right windows in terminal mode",
--- })
+map("t", "<C-k>", [[<C-\><C-N><C-w>k]], {
+  desc = "Switch to up windows  in terminal mode",
+})
+
+map("t", "<C-j>", [[<C-\><C-N><C-w>j]], {
+  desc = "Switch to down windows  in terminal mode",
+})
+
+map("t", "<C-h>", [[<C-\><C-N><C-w>h]], {
+  desc = "Switch to left windows in terminal mode",
+})
+
+map("t", "<C-l>", [[<C-\><C-N><C-w>l]], {
+  desc = "Switch to right windows in terminal mode",
+})
