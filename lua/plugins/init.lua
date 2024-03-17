@@ -1,13 +1,6 @@
 local overrides = require "configs.overrides"
 
 return {
-  {
-    "stevearc/conform.nvim",
-    config = function()
-      require "configs.conform"
-    end,
-  },
-
   { "typicode/bg.nvim",                               lazy = false },
 
   {
@@ -38,7 +31,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      require "nvchad.configs.lspconfig"
+      require("nvchad.configs.lspconfig").defaults()
       require "configs.lspconfig"
     end, -- Override to setup mason-lspconfig
   },

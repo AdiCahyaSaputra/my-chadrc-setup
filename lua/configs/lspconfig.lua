@@ -18,6 +18,7 @@ local servers = {
   "bashls",
   -- "phpactor",
   "lua_ls",
+  -- "elixirls",
 }
 
 local custom_on_attach = function(client, bufnr)
@@ -42,6 +43,12 @@ lspconfig.intelephense.setup {
   on_attach = custom_on_attach,
   capabilities = capabilities,
   filetypes = { "php", "blade" },
+}
+
+lspconfig.elixirls.setup {
+  cmd = { "/home/adics/.local/share/nvim/mason/packages/elixir-ls/language_server.sh" },
+  on_attach = custom_on_attach,
+  capabilities = capabilities,
 }
 
 -- configs.blade = {

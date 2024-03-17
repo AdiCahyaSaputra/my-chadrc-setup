@@ -6,10 +6,10 @@ local M = {}
 local highlights = require "highlights"
 
 M.ui = {
-  theme = "flexoki",
+  theme = "mountain",
   transparency = false,
   statusline = {
-    theme = "vscode_colored",
+    theme = "vscode",
     order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "diagnostics", "filetype", "custom_lsp", "cwd" },
     modules = {
       filetype = function()
@@ -46,7 +46,7 @@ M.ui = {
       "                                                                                                   ",
     },
   },
-  -- theme_toggle = { "flexoki", "one_light" },
+  -- theme_toggle = { "mountain", "one_light" },
 
   hl_override = highlights.override,
   hl_add = highlights.add,

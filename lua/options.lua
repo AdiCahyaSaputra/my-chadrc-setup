@@ -11,6 +11,8 @@ opt.mouse = ""
 g.skip_ts_context_commentstring_module = true
 
 vim.cmd "au TextYankPost * silent! lua vim.highlight.on_yank()"
+vim.cmd "au RecordingEnter * silent! set cmdheight=1"
+vim.cmd "au RecordingLeave * silent! set cmdheight=0"
 
 vim.filetype.add {
   pattern = {

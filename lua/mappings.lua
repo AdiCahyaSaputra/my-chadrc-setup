@@ -72,10 +72,10 @@ map("n", "<leader>ra", ":Lspsaga rename<cr>", { desc = "LSP: Rename variable" })
 -- Normal and Terminal
 map({ "n", "t" }, "<A-i>", function()
   require("nvchad.term").toggle {
-    pos = "sp",
-    id = "hTerm",
+    pos = "float",
+    id = "fTerm",
   }
-end, { desc = "Terminal Toggle Horizontal term" })
+end, { desc = "Terminal Toggle Float term" })
 
 map("t", "<C-k>", [[<C-\><C-N><C-w>k]], {
   desc = "Switch to up windows  in terminal mode",
@@ -92,3 +92,25 @@ map("t", "<C-h>", [[<C-\><C-N><C-w>h]], {
 map("t", "<C-l>", [[<C-\><C-N><C-w>l]], {
   desc = "Switch to right windows in terminal mode",
 })
+
+-- Create 1-5 Toggleable Float Terminal
+local terminal_mapping = {}
+
+for n = 1, 5 do
+  table.insert(terminal_mapping, {
+    "<A-" .. n .. ">",
+    function()
+      require("nvchad.term").toggle {
+        pos = "float",
+        id = "fTerm" .. n,
+      }
+    end,
+    { desc = "Terminal Toggle " .. n .. " Float term" },
+  })
+end
+
+for _, mapping in ipairs(terminal_mapping) do
+  map({ "n", "t" }, mapping[1], mapping[2], mapping[3])
+end
+
+map({ "n", "t" }, "<leader>ft", ":Telescope terms<cr>", { desc = "Find terminal" })

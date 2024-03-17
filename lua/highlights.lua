@@ -49,10 +49,10 @@ M.override = {
   -- TbLineBufOnModified = {
   --   bg = "darker_black",
   -- },
-  NvDashAscii = {
-    bg = "NONE",
-    fg = "vibrant_green",
-  },
+  -- NvDashAscii = {
+  --   bg = "NONE",
+  --   fg = "vibrant_green",
+  -- },
   SagaBorder = {
     fg = "NONE",
     bg = "NONE",
@@ -61,15 +61,9 @@ M.override = {
     fg = "teal",
     -- bg = "teal",
   },
-  -- NvimTreeNormal = {
-  --   bg = "darker_black",
+  -- NvDashButtons = {
+  --   bg = "NONE",
   -- },
-  -- NvimTreeNormalNC = {
-  --   bg = "darker_black",
-  -- },
-  NvDashButtons = {
-    bg = "NONE",
-  },
   Todo = {
     fg = "vibrant_green",
     bg = "black2",
