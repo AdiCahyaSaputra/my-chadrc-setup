@@ -78,7 +78,6 @@ M.nvimtree = {
   git = {
     enable = true,
   },
-
   view = {
     relativenumber = true,
   },
@@ -110,6 +109,7 @@ M.telescope = {
       },
     },
   },
+  extensions_list = { "fzf" },
 }
 
 -- M.comment = {

@@ -6,7 +6,7 @@ local M = {}
 local highlights = require "highlights"
 
 M.ui = {
-  theme = "mountain",
+  theme = "flexoki",
   transparency = false,
   statusline = {
     theme = "vscode",
@@ -46,7 +46,7 @@ M.ui = {
       "                                                                                                   ",
     },
   },
-  -- theme_toggle = { "mountain", "one_light" },
+  -- theme_toggle = { "flexoki", "one_light" },
 
   hl_override = highlights.override,
   hl_add = highlights.add,

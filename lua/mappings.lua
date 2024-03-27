@@ -3,6 +3,13 @@ require "nvchad.mappings"
 -- add yours here
 
 local map = vim.keymap.set
+local nomap = vim.keymap.del
+
+nomap("t", "<C-x>")
+nomap("n", "<C-n>")
+nomap("n", "<leader>e")
+nomap("n", "<tab>")
+nomap("n", "<S-tab>")
 
 -- [General]
 
@@ -24,6 +31,21 @@ map("v", "<A-k>", "<C-u>zz", { desc = "General: Scroll up + center screen", nowa
 
 -- Insert
 map("i", "jk", "<ESC>", { desc = "General: Escape insert mode" })
+
+-- [Telescope]
+
+-- Normal
+-- map("n", "<leader>fp", ":Telescope projects<cr>", {
+--   desc = "Telescope: cd project",
+--   nowait = true,
+--   silent = true,
+-- })
+
+map("n", "<leader>fp", ":CdProject<cr>", {
+  desc = "Telescope: cd project",
+  nowait = true,
+  silent = true,
+})
 
 -- [Tabufline]
 
@@ -98,7 +120,7 @@ local terminal_mapping = {}
 
 for n = 1, 5 do
   table.insert(terminal_mapping, {
-    "<A-" .. n .. ">",
+    "<A-" .. n .. ">f",
     function()
       require("nvchad.term").toggle {
         pos = "float",
@@ -106,6 +128,17 @@ for n = 1, 5 do
       }
     end,
     { desc = "Terminal Toggle " .. n .. " Float term" },
+  })
+
+  table.insert(terminal_mapping, {
+    "<A-" .. n .. ">h",
+    function()
+      require("nvchad.term").toggle {
+        pos = "sp",
+        id = "hTerm" .. n,
+      }
+    end,
+    { desc = "Terminal Toggle " .. n .. " Horizontal term" },
   })
 end
 

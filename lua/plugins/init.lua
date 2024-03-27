@@ -2,7 +2,13 @@ local overrides = require "configs.overrides"
 
 return {
   { "typicode/bg.nvim",                               lazy = false },
-
+  {
+    "nvim-pack/nvim-spectre",
+    config = function()
+      require "spectre"
+    end,
+    event = "BufReadPost",
+  },
   {
     "nvim-tree/nvim-tree.lua",
     opts = {
@@ -23,6 +29,22 @@ return {
       },
       border = "none",
     },
+  },
+  {
+    "LintaoAmons/cd-project.nvim",
+    config = function()
+      require "configs.cd-project"
+    end,
+    event = "VimEnter",
+    enabled = true,
+  },
+  {
+    "ahmedkhalf/project.nvim",
+    config = function()
+      require "configs.project"
+    end,
+    event = "VimEnter",
+    enabled = false,
   },
   {
     "nvim-telescope/telescope.nvim",
