@@ -1,7 +1,7 @@
 local overrides = require "configs.overrides"
 
 return {
-  { "typicode/bg.nvim",                               lazy = false },
+  { "typicode/bg.nvim",                lazy = false },
   {
     "nvim-pack/nvim-spectre",
     config = function()
@@ -9,14 +9,15 @@ return {
     end,
     event = "BufReadPost",
   },
-  {
-    "nvim-tree/nvim-tree.lua",
-    opts = {
-      git = { enable = true },
-    },
-  },
   "NvChad/nvcommunity",
   { import = "nvcommunity.lsp.lspsaga" },
+  { import = "nvcommunity.motion.hop" },
+  {
+    "smoka7/hop.nvim",
+    init = function()
+      vim.keymap.set("n", "<leader>aw", ":HopWord<cr>", { desc = "Hop: Hop all word", nowait = true })
+    end,
+  },
   { import = "nvcommunity.tools.telescope-fzf-native" },
   {
     "nvimdev/lspsaga.nvim",
@@ -139,8 +140,6 @@ return {
     end,
     enabled = false,
   },
-
-  { "phaazon/hop.nvim", branch = "v2", config = true, event = "BufReadPost", name = "hop" },
 
   {
     "folke/which-key.nvim",

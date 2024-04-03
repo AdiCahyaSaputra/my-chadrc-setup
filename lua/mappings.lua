@@ -17,13 +17,12 @@ nomap("n", "<S-tab>")
 map("n", ";", ":", { desc = "General: CMD enter command mode" })
 map("n", "<A-j>", "<C-d>zz", { desc = "General: Scroll down + center screen", nowait = true })
 map("n", "<A-k>", "<C-u>zz", { desc = "General: Scroll up + center screen", nowait = true })
-map("n", "<leader>lf", function()
-  require("conform").format()
-end, { desc = "General: File Format with conform" })
+-- map("n", "<leader>lf", function()
+--   require("conform").format()
+-- end, { desc = "General: File Format with conform" })
 map("n", "sv", ":vsplit<cr><C-w>l", { desc = "General: Vertical split", nowait = true })
 map("n", "ss", ":split<cr><C-w>j", { desc = "General: Horizontal split", nowait = true })
 map("n", "<leader>w", ":w<cr>", { desc = "General: Save the file", nowait = true })
-map("n", "<leader>aw", ":HopWord<cr>", { desc = "General: Hop all word", nowait = true })
 
 -- Visual
 map("v", "<A-j>", "<C-d>zz", { desc = "General: Scroll down + center screen", nowait = true })
@@ -69,25 +68,6 @@ map("n", "<C-b>w", ":tabclose<cr>", { desc = "Tabufline: Close Tab" })
 -- Normal
 map("n", "<leader>e", ":NvimTreeToggle<cr>", { desc = "Nvimtree: Toggle nvim-tree" })
 map("n", "<leader>o", ":NvimTreeFocus<cr>", { desc = "Nvimtree: Focus nvim-tree" })
-
--- [LSP]
-
--- Normal
-map("n", "<leader>dh", function()
-  vim.diagnostic.goto_prev()
-end, { desc = "LSP: Prev diagnostic" })
-map("n", "<leader>dl", function()
-  vim.diagnostic.goto_next()
-end, { desc = "LSP: Next diagnostic" })
-map("n", "<leader>lf", function()
-  vim.lsp.buf.format { async = true }
-end, { desc = "LSP: Format with lsp" })
-map("n", "gd", function()
-  require("telescope.builtin").lsp_definitions()
-end, { desc = "LSP: Goto Definition" })
-map("n", "<leader>ca", ":Lspsaga code_action<cr>", { desc = "LSP: Code action" })
-map("n", "K", ":Lspsaga hover_doc<cr>", { desc = "Hover doc" })
-map("n", "<leader>ra", ":Lspsaga rename<cr>", { desc = "LSP: Rename variable" })
 
 -- [Terminal]
 
@@ -139,6 +119,18 @@ for n = 1, 5 do
       }
     end,
     { desc = "Terminal Toggle " .. n .. " Horizontal term" },
+  })
+
+  table.insert(terminal_mapping, {
+    "<A-" .. n .. ">v",
+    function()
+      require("nvchad.term").toggle {
+        pos = "vsp",
+        id = "vTerm" .. n,
+        size = 0.5,
+      }
+    end,
+    { desc = "Terminal Toggle " .. n .. " Vertical term" },
   })
 end
 

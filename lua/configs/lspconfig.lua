@@ -24,32 +24,34 @@ local servers = {
 }
 
 local custom_on_attach = function(client, bufnr)
-  on_attach(client, bufnr)
+  on_attach(client, bufnr) -- default nvchad on_attach func
 
-  nomap("n", "K")
+  local function opts(desc)
+    return { buffer = bufnr, desc = desc }
+  end
 
+  -- vim.keymap.set
+  map("n", "<leader>dh", function()
+    vim.diagnostic.goto_prev()
+  end, opts "LSP: Prev diagnostic")
+  map("n", "<leader>dl", function()
+    vim.diagnostic.goto_next()
+  end, opts "LSP: Next diagnostic")
+  map("n", "<leader>lf", function()
+    vim.lsp.buf.format { async = true }
+  end, opts "LSP: Format with lsp")
   map("n", "gd", function()
     require("telescope.builtin").lsp_definitions()
-  end, { desc = "LSP: Goto Definition" })
-  map("n", "<leader>ca", ":Lspsaga code_action<cr>", { desc = "LSP: Code action" })
-  map("n", "K", ":Lspsaga hover_doc<cr>", { desc = "Hover doc" })
-  map("n", "<leader>ra", ":Lspsaga rename<cr>", { desc = "LSP: Rename variable" })
+  end, opts "LSP: Goto Definition")
+  map({ "n", "v" }, "<leader>ca", ":Lspsaga code_action<cr>", opts "LSP: Code action")
+  map("n", "K", ":Lspsaga hover_doc<cr>", opts "Hover doc")
+  map("n", "<leader>ra", ":Lspsaga rename<cr>", opts "LSP: Rename variable")
 end
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = custom_on_attach,
     capabilities = capabilities,
-    root_dir = function(fname)
-      return util.root_pattern ".git" (fname)
-          or util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", "composer.json", "mix.exs")(fname)
-    end,
-    -- root_dir = vim.fs.dirname(
-    --   vim.fs.find(
-    --     { ".git", "package.json", "tsconfig.json", "jsconfig.json", "composer.json", "mix.exs" },
-    --     { upward = true }
-    --   )[1]
-    -- ),
   }
 end
 
@@ -57,20 +59,12 @@ lspconfig.intelephense.setup {
   on_attach = custom_on_attach,
   capabilities = capabilities,
   filetypes = { "php", "blade" },
-  root_dir = function(fname)
-    return util.root_pattern ".git" (fname)
-        or util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", "composer.json", "mix.exs")(fname)
-  end,
 }
 
 lspconfig.elixirls.setup {
   cmd = { "/home/adics/.local/share/nvim/mason/packages/elixir-ls/language_server.sh" },
   on_attach = custom_on_attach,
   capabilities = capabilities,
-  root_dir = function(fname)
-    return util.root_pattern ".git" (fname)
-        or util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", "composer.json", "mix.exs")(fname)
-  end,
 }
 
 -- configs.blade = {

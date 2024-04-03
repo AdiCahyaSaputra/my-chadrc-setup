@@ -1,6 +1,8 @@
 local stbufnr = function()
   return vim.api.nvim_win_get_buf(vim.g.statusline_winid or 0)
 end
+
+---@class ChadrcConfig
 local M = {}
 
 local highlights = require "highlights"
@@ -9,7 +11,8 @@ M.ui = {
   theme = "flexoki",
   transparency = false,
   statusline = {
-    theme = "vscode",
+    theme = "default",
+    separator_style = "round",
     order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "diagnostics", "filetype", "custom_lsp", "cwd" },
     modules = {
       filetype = function()
@@ -20,7 +23,7 @@ M.ui = {
         if rawget(vim, "lsp") then
           for _, client in ipairs(vim.lsp.get_active_clients()) do
             if client.attached_buffers[stbufnr()] and client.name ~= "null-ls" then
-              return (vim.o.columns > 100 and "%#St_Lsp# 󰈸 " .. client.name .. " ") or "   LSP "
+              return (vim.o.columns > 100 and "%#St_Lsp# 󰈸 " .. client.name .. " ") or " 󰈸  LSP "
             end
           end
         end
@@ -46,7 +49,7 @@ M.ui = {
       "                                                                                                   ",
     },
   },
-  -- theme_toggle = { "flexoki", "one_light" },
+  -- theme_toggle = { "rosepine", "one_light" },
 
   hl_override = highlights.override,
   hl_add = highlights.add,
