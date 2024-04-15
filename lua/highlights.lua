@@ -10,7 +10,7 @@ M.override = {
     italic = true,
   },
   WinSeparator = {
-    fg = "vibrant_green",
+    fg = "yellow",
   },
   Visual = {
     bg = "black",
@@ -20,9 +20,9 @@ M.override = {
     bg = "darker_black",
     fg = "darker_black",
   },
-  -- Normal = {
-  --   bg = "NONE",
-  -- },
+  Normal = {
+    bg = "NONE",
+  },
   -- St_NormalMode = {
   --   fg = "blue",
   --   bg = "black2",
@@ -68,11 +68,32 @@ M.override = {
     fg = "vibrant_green",
     bg = "black2",
   },
+  -- CursorLine = {
+  --   bg = "darker_black",
+  -- },
+  CmpPmenu = {
+    bg = "darker_black",
+  },
+  DiagnosticVirtualTextHint = {
+    bg = "NONE"
+  },
+  DiagnosticVirtualTextWarn = {
+    bg = "NONE"
+  },
+  DiagnosticVirtualTextError = {
+    bg = "NONE"
+  },
+  DiagnosticVirtualTextInfo = {
+    bg = "NONE"
+  },
 }
 
 ---@type HLTable
 M.add = {
   NvimTreeOpenedFolderName = { fg = "green", bold = true },
+  NormalNC = {
+    bg = "NONE"
+  }
 }
 
 return M

@@ -8,7 +8,7 @@ local M = {}
 local highlights = require "highlights"
 
 M.ui = {
-  theme = "flexoki",
+  theme = "kanagawa",
   transparency = false,
   statusline = {
     theme = "default",
@@ -34,7 +34,6 @@ M.ui = {
   },
   cmp = {
     style = "flat_dark",
-    selected_item_bg = "simple",
   },
   nvdash = {
     load_on_startup = true,
@@ -49,10 +48,18 @@ M.ui = {
       "                                                                                                   ",
     },
   },
-  -- theme_toggle = { "rosepine", "one_light" },
+  -- theme_toggle = { "kanagawa", "one_light" },
 
   hl_override = highlights.override,
   hl_add = highlights.add,
+}
+
+M.base46 = {
+  integrations = {
+    "hop",
+    "trouble",
+    "todo",
+  },
 }
 
 return M

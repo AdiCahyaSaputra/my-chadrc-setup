@@ -1,7 +1,8 @@
 local overrides = require "configs.overrides"
 
 return {
-  { "typicode/bg.nvim",                lazy = false },
+  { "typicode/bg.nvim",   lazy = false,         enabled = false },
+  { "tpope/vim-fugitive", event = "BufReadPost" },
   {
     "nvim-pack/nvim-spectre",
     config = function()
@@ -12,9 +13,26 @@ return {
   "NvChad/nvcommunity",
   { import = "nvcommunity.lsp.lspsaga" },
   { import = "nvcommunity.motion.hop" },
+  { import = "nvcommunity.diagnostics.trouble" },
+  {
+    "folke/trouble.nvim",
+    cmd = { "Trouble", "TroubleToggle", "TodoTrouble" },
+    dependencies = {
+      {
+        "folke/todo-comments.nvim",
+        opts = {},
+      },
+    },
+    config = function()
+      dofile(vim.g.base46_cache .. "trouble")
+      dofile(vim.g.base46_cache .. "todo")
+    end,
+  },
   {
     "smoka7/hop.nvim",
     init = function()
+      dofile(vim.g.base46_cache .. "hop")
+
       vim.keymap.set("n", "<leader>aw", ":HopWord<cr>", { desc = "Hop: Hop all word", nowait = true })
     end,
   },

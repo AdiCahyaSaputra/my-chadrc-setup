@@ -1,20 +1,19 @@
 local map = vim.keymap.set
-local nomap = vim.keymap.del
 
 local on_attach = require("nvchad.configs.lspconfig").on_attach
+local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
-local util = lspconfig.util
 -- local configs = require "lspconfig.configs"
 
 -- if you just want default config for the servers then put them in a table
 local servers = {
-  "html",
+  -- "html",
   "cssls",
   "tsserver",
   "clangd",
-  "intelephense",
+  -- "intelephense",
   "prismals",
   "vuels",
   "bashls",
@@ -55,6 +54,16 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+lspconfig.html.setup {
+  on_init = function(client)
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentFormattingRangeProvider = false
+  end,
+  on_attach = custom_on_attach,
+  capabilities = capabilities,
+  filetypes = { "html", "templ", "blade" },
+}
+
 lspconfig.intelephense.setup {
   on_attach = custom_on_attach,
   capabilities = capabilities,
@@ -65,6 +74,15 @@ lspconfig.elixirls.setup {
   cmd = { "/home/adics/.local/share/nvim/mason/packages/elixir-ls/language_server.sh" },
   on_attach = custom_on_attach,
   capabilities = capabilities,
+}
+
+lspconfig.dartls.setup {
+  on_init = on_init,
+  on_attach = custom_on_attach,
+  capabilities = capabilities,
+  root_dir = function()
+    return vim.loop.cwd()
+  end,
 }
 
 -- configs.blade = {

@@ -7,6 +7,9 @@ local g = vim.g
 opt.wrap = false
 opt.relativenumber = true
 opt.mouse = ""
+opt.cursorline = false
+opt.cursorlineopt = "both"
+opt.scrolloff = 20
 
 g.skip_ts_context_commentstring_module = true
 

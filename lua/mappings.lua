@@ -6,6 +6,7 @@ local map = vim.keymap.set
 local nomap = vim.keymap.del
 
 nomap("t", "<C-x>")
+-- nomap("t", "<Esc>")
 nomap("n", "<C-n>")
 nomap("n", "<leader>e")
 nomap("n", "<tab>")
@@ -46,6 +47,15 @@ map("n", "<leader>fp", ":CdProject<cr>", {
   silent = true,
 })
 
+-- [Git]
+
+-- Normal
+map("n", "<leader>gd", ":Gvdiffsplit!<cr>", {
+  desc = "Git: resolve git in 3 way merge",
+  nowait = true,
+  silent = false,
+})
+
 -- [Tabufline]
 
 -- Normal
@@ -58,10 +68,10 @@ end, { desc = "Tabufline: Previous Buffer" })
 map("n", "C", function()
   require("nvchad.tabufline").close_buffer()
 end, { desc = "Tabufline: Close Buffer" })
-map("n", "<C-b>c", ":tabnew<cr>", { desc = "Tabufline: New Tab" })
-map("n", "<C-b>n", ":tabNext<cr>", { desc = "Tabufline: Next Tab" })
-map("n", "<C-b>p", ":tabprevious<cr>", { desc = "Tabufline: Previous Tab" })
-map("n", "<C-b>w", ":tabclose<cr>", { desc = "Tabufline: Close Tab" })
+-- map("n", "<C-b>c", ":tabnew<cr>", { desc = "Tabufline: New Tab" })
+-- map("n", "<C-b>n", ":tabNext<cr>", { desc = "Tabufline: Next Tab" })
+-- map("n", "<C-b>p", ":tabprevious<cr>", { desc = "Tabufline: Previous Tab" })
+-- map("n", "<C-b>w", ":tabclose<cr>", { desc = "Tabufline: Close Tab" })
 
 -- [NvimTree]
 
