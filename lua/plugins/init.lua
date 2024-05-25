@@ -2,6 +2,18 @@ local overrides = require "configs.overrides"
 
 return {
   { "typicode/bg.nvim",   lazy = false,         enabled = false },
+  {
+    "code-biscuits/nvim-biscuits",
+    opts = {
+      language_config = {
+        dart = {
+          prefix_string = "  ",
+        },
+      },
+    },
+    event = "BufReadPost",
+    config = true,
+  },
   { "tpope/vim-fugitive", event = "BufReadPost" },
   {
     "nvim-pack/nvim-spectre",
@@ -14,6 +26,7 @@ return {
   { import = "nvcommunity.lsp.lspsaga" },
   { import = "nvcommunity.motion.hop" },
   { import = "nvcommunity.diagnostics.trouble" },
+  { import = "nvcommunity.tools.presence",     enabled = false },
   {
     "folke/trouble.nvim",
     cmd = { "Trouble", "TroubleToggle", "TodoTrouble" },
@@ -88,6 +101,9 @@ return {
       "windwp/nvim-ts-autotag",
       config = function()
         require("nvim-ts-autotag").setup {
+          opts = {
+            enable_close_on_slash = true,
+          },
           filetypes = {
             "html",
             "javascript",

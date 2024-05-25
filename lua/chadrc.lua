@@ -8,8 +8,11 @@ local M = {}
 local highlights = require "highlights"
 
 M.ui = {
-  theme = "kanagawa",
+  theme = "jellybeans",
   transparency = false,
+  tabufline = {
+    order = { "treeOffset", "buffers", "tabs", "btns" },
+  },
   statusline = {
     theme = "default",
     separator_style = "round",
@@ -21,7 +24,7 @@ M.ui = {
       end,
       custom_lsp = function()
         if rawget(vim, "lsp") then
-          for _, client in ipairs(vim.lsp.get_active_clients()) do
+          for _, client in ipairs(vim.lsp.get_clients()) do
             if client.attached_buffers[stbufnr()] and client.name ~= "null-ls" then
               return (vim.o.columns > 100 and "%#St_Lsp# 󰈸 " .. client.name .. " ") or " 󰈸  LSP "
             end
@@ -48,8 +51,8 @@ M.ui = {
       "                                                                                                   ",
     },
   },
-  -- theme_toggle = { "kanagawa", "one_light" },
-
+  -- theme_toggle = { "rxyhn", "one_light" },
+  lsp_semantic_tokens = true,
   hl_override = highlights.override,
   hl_add = highlights.add,
 }

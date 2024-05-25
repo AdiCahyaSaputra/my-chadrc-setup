@@ -13,34 +13,13 @@ M.treesitter = {
     "php",
     "prisma",
     "vue",
+    "dart",
   },
   indent = {
     enable = true,
     -- disable = {
     --   "python"
     -- },
-  },
-  autotag = {
-    enable = true,
-    enable_close_on_slash = true,
-    filetypes = {
-      "html",
-      "javascript",
-      "typescript",
-      "javascriptreact",
-      "typescriptreact",
-      "svelte",
-      "vue",
-      "tsx",
-      "jsx",
-      "rescript",
-      "css",
-      "lua",
-      "xml",
-      "php",
-      "markdown",
-      "blade",
-    },
   },
 }
 

@@ -13,16 +13,21 @@ M.override = {
     fg = "yellow",
   },
   Visual = {
-    bg = "black",
-    reverse = true,
+    bg = "one_bg3",
   },
-  FloatBorder = {
-    bg = "darker_black",
-    fg = "darker_black",
-  },
-  Normal = {
+  NormalFloat = {
     bg = "NONE",
   },
+  Float = {
+    bg = "NONE",
+  },
+  FloatBorder = {
+    bg = "NONE",
+    fg = "yellow",
+  },
+  -- Normal = {
+  --   bg = "NONE",
+  -- },
   -- St_NormalMode = {
   --   fg = "blue",
   --   bg = "black2",
@@ -75,16 +80,16 @@ M.override = {
     bg = "darker_black",
   },
   DiagnosticVirtualTextHint = {
-    bg = "NONE"
+    bg = "NONE",
   },
   DiagnosticVirtualTextWarn = {
-    bg = "NONE"
+    bg = "NONE",
   },
   DiagnosticVirtualTextError = {
-    bg = "NONE"
+    bg = "NONE",
   },
   DiagnosticVirtualTextInfo = {
-    bg = "NONE"
+    bg = "NONE",
   },
 }
 
@@ -92,8 +97,8 @@ M.override = {
 M.add = {
   NvimTreeOpenedFolderName = { fg = "green", bold = true },
   NormalNC = {
-    bg = "NONE"
-  }
+    bg = "NONE",
+  },
 }
 
 return M

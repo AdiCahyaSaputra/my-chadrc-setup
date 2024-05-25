@@ -18,7 +18,7 @@ local servers = {
   "vuels",
   "bashls",
   -- "phpactor",
-  "lua_ls",
+  -- "lua_ls",
   -- "elixirls",
 }
 
@@ -42,7 +42,7 @@ local custom_on_attach = function(client, bufnr)
   map("n", "gd", function()
     require("telescope.builtin").lsp_definitions()
   end, opts "LSP: Goto Definition")
-  map({ "n", "v" }, "<leader>ca", ":Lspsaga code_action<cr>", opts "LSP: Code action")
+  -- map({ "n", "v" }, "<leader>ca", ":Lspsaga code_action<cr>", opts "LSP: Code action")
   map("n", "K", ":Lspsaga hover_doc<cr>", opts "Hover doc")
   map("n", "<leader>ra", ":Lspsaga rename<cr>", opts "LSP: Rename variable")
 end
