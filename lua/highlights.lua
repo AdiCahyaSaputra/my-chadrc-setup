@@ -12,9 +12,9 @@ M.override = {
   WinSeparator = {
     fg = "yellow",
   },
-  Visual = {
-    bg = "one_bg3",
-  },
+  -- Visual = {
+  --   bg = "one_bg3",
+  -- },
   NormalFloat = {
     bg = "NONE",
   },
@@ -26,7 +26,7 @@ M.override = {
     fg = "yellow",
   },
   -- Normal = {
-  --   bg = "NONE",
+  --   bg = "#000000",
   -- },
   -- St_NormalMode = {
   --   fg = "blue",
@@ -42,22 +42,22 @@ M.override = {
   -- St_CommandMode = {
   --   bg = "black2",
   -- },
-  -- TblineFill = {
-  --   bg = "black",
-  -- },
-  -- TbLineBufOn = {
-  --   bg = "darker_black",
-  -- },
-  -- TbLineBufOnClose = {
-  --   bg = "darker_black",
-  -- },
-  -- TbLineBufOnModified = {
-  --   bg = "darker_black",
-  -- },
-  -- NvDashAscii = {
-  --   bg = "NONE",
-  --   fg = "vibrant_green",
-  -- },
+  TblineFill = {
+    bg = "black",
+  },
+  TbLineBufOn = {
+    bg = "darker_black",
+  },
+  TbLineBufOnClose = {
+    bg = "darker_black",
+  },
+  TbLineBufOnModified = {
+    bg = "darker_black",
+  },
+  NvDashAscii = {
+    bg = "#000000",
+    fg = "yellow",
+  },
   SagaBorder = {
     fg = "NONE",
     bg = "NONE",

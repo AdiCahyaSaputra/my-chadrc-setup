@@ -91,6 +91,17 @@ M.telescope = {
   extensions_list = { "fzf" },
 }
 
+M.cmp = {
+  sources = {
+    { name = "supermaven" },
+    { name = "nvim_lsp" },
+    { name = "luasnip" },
+    { name = "buffer" },
+    { name = "nvim_lua" },
+    { name = "path" },
+  },
+}
+
 -- M.comment = {
 --   pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
 -- }

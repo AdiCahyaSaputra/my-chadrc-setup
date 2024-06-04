@@ -1,10 +1,22 @@
 local overrides = require "configs.overrides"
 
 return {
-  { "typicode/bg.nvim",   lazy = false,         enabled = false },
+  { "typicode/bg.nvim",                        lazy = false,   enabled = false },
+  {
+    "supermaven-inc/supermaven-nvim",
+    config = function()
+      require "configs.supermaven"
+    end,
+    event = "BufReadPost",
+    enabled = false,
+  },
   {
     "code-biscuits/nvim-biscuits",
     opts = {
+      cursor_line_only = false,
+      default_config = {
+        prefix_string = "  ",
+      },
       language_config = {
         dart = {
           prefix_string = "  ",
@@ -14,7 +26,7 @@ return {
     event = "BufReadPost",
     config = true,
   },
-  { "tpope/vim-fugitive", event = "BufReadPost" },
+  -- { "tpope/vim-fugitive", event = "BufReadPost" },
   {
     "nvim-pack/nvim-spectre",
     config = function()
@@ -26,6 +38,8 @@ return {
   { import = "nvcommunity.lsp.lspsaga" },
   { import = "nvcommunity.motion.hop" },
   { import = "nvcommunity.diagnostics.trouble" },
+  { import = "nvcommunity.git.diffview" },
+  { import = "nvcommunity.git.neogit" },
   { import = "nvcommunity.tools.presence",     enabled = false },
   {
     "folke/trouble.nvim",
@@ -81,6 +95,10 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     opts = overrides.telescope,
+  },
+  {
+    "hrsh7th/nvim-cmp",
+    opts = overrides.cmp,
   },
   {
     "neovim/nvim-lspconfig",
