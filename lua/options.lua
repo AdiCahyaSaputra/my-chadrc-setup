@@ -3,6 +3,7 @@ require "nvchad.options"
 -- add yours here!
 local opt = vim.opt
 local g = vim.g
+local o = vim.o
 
 opt.wrap = false
 opt.relativenumber = true
@@ -10,6 +11,10 @@ opt.mouse = ""
 opt.cursorline = false
 opt.cursorlineopt = "both"
 opt.scrolloff = 20
+
+-- o.foldmethod = 'indent'
+-- o.foldlevel = 99
+-- o.foldexpr = 'nvim_treesitter#foldexpr()'
 
 g.skip_ts_context_commentstring_module = true
 

@@ -21,6 +21,9 @@ M.treesitter = {
     --   "python"
     -- },
   },
+  folding = {
+    enable = true
+  }
 }
 
 M.mason = {

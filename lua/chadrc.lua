@@ -8,15 +8,15 @@ local M = {}
 local highlights = require "highlights"
 
 M.ui = {
-  theme = "jellybeans",
+  theme = "solarized_osaka",
   transparency = false,
   tabufline = {
-    order = { "treeOffset", "buffers", "tabs", "btns" },
+    order = { "treeOffset", "buffers", "btns" },
   },
   statusline = {
-    theme = "default",
+    theme = "vscode_colored",
     separator_style = "round",
-    order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "diagnostics", "filetype", "custom_lsp", "cwd" },
+    order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "diagnostics", "filetype", "custom_lsp", "custom_cwd" },
     modules = {
       filetype = function()
         local ft = vim.bo[stbufnr()].ft
@@ -33,6 +33,12 @@ M.ui = {
 
         return ""
       end,
+      custom_cwd = function ()
+        local name = vim.loop.cwd()
+        name = "%#St_cwd# " .. (name:match "([^/\\]+)[/\\]*$" or name) .. " "
+
+        return (vim.o.columns > 85 and name) or ""
+      end
     },
   },
   cmp = {

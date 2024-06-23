@@ -12,9 +12,9 @@ M.override = {
   WinSeparator = {
     fg = "yellow",
   },
-  -- Visual = {
-  --   bg = "one_bg3",
-  -- },
+  Visual = {
+    reverse = true
+  },
   NormalFloat = {
     bg = "NONE",
   },
@@ -25,23 +25,25 @@ M.override = {
     bg = "NONE",
     fg = "yellow",
   },
-  -- Normal = {
-  --   bg = "#000000",
-  -- },
-  -- St_NormalMode = {
-  --   fg = "blue",
-  --   bg = "black2",
-  -- },
-  -- St_InsertMode = {
-  --   fg = "purple",
-  --   bg = "black2",
-  -- },
-  -- St_VisualMode = {
-  --   bg = "black2",
-  -- },
-  -- St_CommandMode = {
-  --   bg = "black2",
-  -- },
+  Normal = {
+    bg = "NONE",
+  },
+  St_NormalMode = {
+    fg = "black",
+    bg = "one_bg2",
+  },
+  St_InsertMode = {
+    fg = "black",
+    bg = "one_bg2",
+  },
+  St_VisualMode = {
+    fg = "black",
+    bg = "one_bg2",
+  },
+  St_CommandMode = {
+    fg = "black",
+    bg = "one_bg2",
+  },
   TblineFill = {
     bg = "black",
   },
@@ -54,6 +56,10 @@ M.override = {
   TbLineBufOnModified = {
     bg = "darker_black",
   },
+  -- TbThemeToggleBtn = {
+  --   fg = "black",
+  --   bg = "one_bg2",
+ -- },
   NvDashAscii = {
     bg = "#000000",
     fg = "yellow",
@@ -63,8 +69,8 @@ M.override = {
     bg = "NONE",
   },
   St_cwd = {
-    fg = "teal",
-    -- bg = "teal",
+    fg = "black",
+    bg = "nord_blue",
   },
   -- NvDashButtons = {
   --   bg = "NONE",

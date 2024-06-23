@@ -56,6 +56,19 @@ map("n", "<leader>gd", ":Gvdiffsplit!<cr>", {
   silent = false,
 })
 
+map("n", "<leader>gvo", ":DiffviewOpen<cr>", {
+  desc = "Git: Open diffview",
+  nowait = true,
+  silent = false,
+})
+
+map("n", "<leader>gvc", ":DiffviewClose<cr>", {
+  desc = "Git: Open diffview",
+  nowait = true,
+  silent = false,
+})
+
+
 -- [Tabufline]
 
 -- Normal

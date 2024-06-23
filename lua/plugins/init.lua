@@ -1,7 +1,7 @@
 local overrides = require "configs.overrides"
 
 return {
-  { "typicode/bg.nvim",                        lazy = false,   enabled = false },
+  { "typicode/bg.nvim",   lazy = false,         enabled = false },
   {
     "supermaven-inc/supermaven-nvim",
     config = function()
@@ -25,8 +25,9 @@ return {
     },
     event = "BufReadPost",
     config = true,
+    enabled = false
   },
-  -- { "tpope/vim-fugitive", event = "BufReadPost" },
+  { "tpope/vim-fugitive", event = "BufReadPost" },
   {
     "nvim-pack/nvim-spectre",
     config = function()
@@ -37,23 +38,56 @@ return {
   "NvChad/nvcommunity",
   { import = "nvcommunity.lsp.lspsaga" },
   { import = "nvcommunity.motion.hop" },
-  { import = "nvcommunity.diagnostics.trouble" },
   { import = "nvcommunity.git.diffview" },
   { import = "nvcommunity.git.neogit" },
-  { import = "nvcommunity.tools.presence",     enabled = false },
+  { import = "nvcommunity.tools.presence",  enabled = false },
+  { import = "nvcommunity.motion.neoscroll" },
+  { import = "nvcommunity.folds.ufo" },
   {
-    "folke/trouble.nvim",
-    cmd = { "Trouble", "TroubleToggle", "TodoTrouble" },
-    dependencies = {
-      {
-        "folke/todo-comments.nvim",
-        opts = {},
+    "kevinhwang91/nvim-ufo",
+    init = function()
+      vim.o.foldlevel = 99 -- Using ufo provider need a large value
+      vim.o.foldlevelstart = 99
+      vim.o.foldnestmax = 0
+      vim.o.foldenable = true
+      vim.o.foldmethod = "indent"
+
+      vim.opt.fillchars = {
+        fold = " ",
+        foldopen = "",
+        foldsep = " ",
+        foldclose = "",
+        stl = " ",
+        eob = " ",
+      }
+    end,
+  },
+  {
+    "karb94/neoscroll.nvim",
+    -- keys = { "<C-d>", "<C-u>" },
+    event = "BufReadPost",
+    opts = {
+      mappings = {
+        "<C-u>",
+        "<C-d>",
       },
+      hide_cursor = false,
+      respect_scrolloff = true
     },
     config = function()
-      dofile(vim.g.base46_cache .. "trouble")
-      dofile(vim.g.base46_cache .. "todo")
-    end,
+      local neoscroll = require('neoscroll')
+
+      local keymap = {
+        ["<A-j>"] = function() neoscroll.ctrl_d({ duration = 50 }) end,
+        ["<A-k>"] = function() neoscroll.ctrl_u({ duration = 50 }) end,
+      }
+
+      local modes = { 'n', 'v', 'x' }
+
+      for key, func in pairs(keymap) do
+        vim.keymap.set(modes, key, func)
+      end
+    end
   },
   {
     "smoka7/hop.nvim",
@@ -82,14 +116,6 @@ return {
       require "configs.cd-project"
     end,
     event = "VimEnter",
-    enabled = true,
-  },
-  {
-    "ahmedkhalf/project.nvim",
-    config = function()
-      require "configs.project"
-    end,
-    event = "VimEnter",
     enabled = false,
   },
   {
@@ -103,7 +129,9 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      require("nvchad.configs.lspconfig").defaults()
+      dofile(vim.g.base46_cache .. "lsp")
+      require("nvchad.lsp").diagnostic_config()
+
       require "configs.lspconfig"
     end, -- Override to setup mason-lspconfig
   },
@@ -174,6 +202,7 @@ return {
     config = function()
       require("better_escape").setup()
     end,
+    enabled = false
   },
 
   {
@@ -214,6 +243,7 @@ return {
 
   {
     "numToStr/Comment.nvim",
+    event = "BufReadPost",
     dependencies = {
       {
         "JoosepAlviste/nvim-ts-context-commentstring",
@@ -223,11 +253,21 @@ return {
           }
         end,
       },
+      {
+        "folke/ts-comments.nvim",
+        opts = {
+          lang = {
+            blade = '{{-- %s --}}'
+          }
+        }
+      }
     },
     config = function()
       require("Comment").setup {
         pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
       }
+
+      vim.keymap.set('n', 'gcc', require('Comment.api').toggle.linewise.current)
     end,
   },
 }
