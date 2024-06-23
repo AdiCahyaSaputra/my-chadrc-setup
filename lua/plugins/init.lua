@@ -25,6 +25,7 @@ return {
     },
     event = "BufReadPost",
     config = true,
+    enabled = false
   },
   -- { "tpope/vim-fugitive", event = "BufReadPost" },
   {
@@ -41,6 +42,34 @@ return {
   { import = "nvcommunity.git.diffview" },
   { import = "nvcommunity.git.neogit" },
   { import = "nvcommunity.tools.presence",     enabled = false },
+  { import = "nvcommunity.motion.neoscroll" },
+  {
+    "karb94/neoscroll.nvim",
+    -- keys = { "<C-d>", "<C-u>" },
+    event = "BufReadPost",
+    opts = {
+      mappings = {
+        "<C-u>",
+        "<C-d>",
+      },
+      hide_cursor = false,
+      respect_scrolloff = true
+    },
+    config = function()
+      local neoscroll = require('neoscroll')
+
+      local keymap = {
+        ["<A-j>"] = function() neoscroll.ctrl_d({ duration = 150 }) end,
+        ["<A-k>"] = function() neoscroll.ctrl_u({ duration = 150 }) end,
+      }
+
+      local modes = { 'n', 'v', 'x' }
+
+      for key, func in pairs(keymap) do
+        vim.keymap.set(modes, key, func)
+      end
+    end
+  },
   {
     "folke/trouble.nvim",
     cmd = { "Trouble", "TroubleToggle", "TodoTrouble" },

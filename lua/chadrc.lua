@@ -8,7 +8,7 @@ local M = {}
 local highlights = require "highlights"
 
 M.ui = {
-  theme = "jellybeans",
+  theme = "tokyodark",
   transparency = false,
   tabufline = {
     order = { "treeOffset", "buffers", "tabs", "btns" },

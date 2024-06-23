@@ -12,9 +12,9 @@ M.override = {
   WinSeparator = {
     fg = "yellow",
   },
-  -- Visual = {
-  --   bg = "one_bg3",
-  -- },
+  Visual = {
+    reverse = true
+  },
   NormalFloat = {
     bg = "NONE",
   },
@@ -25,9 +25,9 @@ M.override = {
     bg = "NONE",
     fg = "yellow",
   },
-  -- Normal = {
-  --   bg = "#000000",
-  -- },
+  Normal = {
+    bg = "NONE",
+  },
   -- St_NormalMode = {
   --   fg = "blue",
   --   bg = "black2",
