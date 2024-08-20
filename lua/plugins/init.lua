@@ -37,6 +37,7 @@ return {
   },
   "NvChad/nvcommunity",
   { import = "nvcommunity.lsp.lspsaga" },
+  { import = "nvcommunity.lsp.barbecue" },
   { import = "nvcommunity.motion.hop" },
   { import = "nvcommunity.git.diffview" },
   { import = "nvcommunity.git.neogit" },
@@ -266,6 +267,10 @@ return {
       require("Comment").setup {
         pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
       }
+
+      local ft = require('Comment.ft')
+
+      ft.set('blade', '{{-- %s --}}')
 
       vim.keymap.set('n', 'gcc', require('Comment.api').toggle.linewise.current)
     end,

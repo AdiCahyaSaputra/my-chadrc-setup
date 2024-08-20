@@ -8,14 +8,14 @@ local M = {}
 local highlights = require "highlights"
 
 M.ui = {
-  theme = "solarized_osaka",
+  theme = "ashes",
   transparency = false,
   tabufline = {
     order = { "treeOffset", "buffers", "btns" },
   },
   statusline = {
-    theme = "vscode_colored",
-    separator_style = "round",
+    theme = "default",
+    separator_style = "default",
     order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "diagnostics", "filetype", "custom_lsp", "custom_cwd" },
     modules = {
       filetype = function()
@@ -58,7 +58,7 @@ M.ui = {
       -- "                                                                                                   ",
     },
   },
-  -- theme_toggle = { "rxyhn", "one_light" },
+  -- theme_toggle = { "yoru", "one_light" },
   lsp_semantic_tokens = false,
   hl_override = highlights.override,
   hl_add = highlights.add,
