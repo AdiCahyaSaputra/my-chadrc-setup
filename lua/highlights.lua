@@ -10,7 +10,7 @@ M.override = {
     italic = true,
   },
   WinSeparator = {
-    fg = "yellow",
+    fg = "black2",
   },
   Visual = {
     reverse = true
@@ -60,10 +60,10 @@ M.override = {
   --   fg = "black",
   --   bg = "one_bg2",
  -- },
-  NvDashAscii = {
-    bg = "#000000",
-    fg = "yellow",
-  },
+  -- NvDashAscii = {
+  --   bg = "#000000",
+  --   fg = "yellow",
+  -- },
   SagaBorder = {
     fg = "NONE",
     bg = "NONE",
@@ -79,9 +79,9 @@ M.override = {
     fg = "vibrant_green",
     bg = "black2",
   },
-  -- CursorLine = {
-  --   bg = "darker_black",
-  -- },
+  CursorLine = {
+    bg = "darker_black",
+  },
   CmpPmenu = {
     bg = "darker_black",
   },

@@ -112,6 +112,19 @@ return {
     },
   },
   {
+    'mg979/vim-visual-multi',
+    branch = "master",
+    init = function()
+      vim.g.VM_maps = {
+        ['Find Under']         = '<C-n>',
+        ['Find Subword Under'] = '<C-n>',
+        ['Add Cursor Down']    = '<C-Down>',
+        ['Add Cursor Up']      = '<C-Up>',
+      }
+    end,
+    lazy = false
+  },
+  {
     "LintaoAmons/cd-project.nvim",
     config = function()
       require "configs.cd-project"
