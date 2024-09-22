@@ -41,9 +41,43 @@ return {
   { import = "nvcommunity.motion.hop" },
   { import = "nvcommunity.git.diffview" },
   { import = "nvcommunity.git.neogit" },
-  { import = "nvcommunity.tools.presence",  enabled = false },
+  { import = "nvcommunity.tools.presence",   enabled = false },
   { import = "nvcommunity.motion.neoscroll" },
   { import = "nvcommunity.folds.ufo" },
+  { import = "nvcommunity.editor.illuminate" },
+  {
+    "RRethy/vim-illuminate",
+    config = function()
+      require("illuminate").configure {
+        under_cursor = true,
+        max_file_lines = nil,
+        delay = 100,
+        providers = {
+          "lsp",
+          "treesitter",
+          "regex",
+        },
+        filetypes_denylist = {
+          "NvimTree",
+          "Trouble",
+          "Outline",
+          "TelescopePrompt",
+          "Empty",
+          "dirvish",
+          "fugitive",
+          "alpha",
+          "packer",
+          "neogitstatus",
+          "spectre_panel",
+          "toggleterm",
+          "DressingSelect",
+          "aerial",
+        },
+      }
+
+      dofile(vim.g.base46_cache .. "vim-illuminate")
+    end
+  },
   {
     "kevinhwang91/nvim-ufo",
     init = function()
@@ -75,6 +109,7 @@ return {
       hide_cursor = false,
       respect_scrolloff = true
     },
+    enabled = false,
     config = function()
       local neoscroll = require('neoscroll')
 
@@ -271,7 +306,7 @@ return {
         "folke/ts-comments.nvim",
         opts = {
           lang = {
-            blade = '{{-- %s --}}'
+            html = '{{-- %s --}}'
           }
         }
       }
@@ -283,7 +318,7 @@ return {
 
       local ft = require('Comment.ft')
 
-      ft.set('blade', '{{-- %s --}}')
+      ft.set('html', '{{-- %s --}}')
 
       vim.keymap.set('n', 'gcc', require('Comment.api').toggle.linewise.current)
     end,

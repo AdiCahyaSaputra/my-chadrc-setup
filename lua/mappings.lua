@@ -81,10 +81,10 @@ end, { desc = "Tabufline: Previous Buffer" })
 map("n", "C", function()
   require("nvchad.tabufline").close_buffer()
 end, { desc = "Tabufline: Close Buffer" })
--- map("n", "<C-b>c", ":tabnew<cr>", { desc = "Tabufline: New Tab" })
--- map("n", "<C-b>n", ":tabNext<cr>", { desc = "Tabufline: Next Tab" })
--- map("n", "<C-b>p", ":tabprevious<cr>", { desc = "Tabufline: Previous Tab" })
--- map("n", "<C-b>w", ":tabclose<cr>", { desc = "Tabufline: Close Tab" })
+
+map("n", "te", ":tabedit<cr>", { desc = "Tabufline: New Tab" })
+map("n", "<Tab>", ":tabnext<cr>", { desc = "Tabufline: Next Tab" })
+map("n", "<S-Tab>", ":tabprevious<cr>", { desc = "Tabufline: Previous Tab" })
 
 -- [NvimTree]
 

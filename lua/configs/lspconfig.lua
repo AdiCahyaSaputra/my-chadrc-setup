@@ -11,7 +11,7 @@ local lspconfig = require "lspconfig"
 local servers = {
   -- "html",
   "cssls",
-  "tsserver",
+  "ts_ls",
   "clangd",
   -- "intelephense",
   "prismals",
@@ -20,6 +20,7 @@ local servers = {
   -- "phpactor",
   -- "lua_ls",
   -- "elixirls",
+  "jsonls"
 }
 
 local custom_on_attach = function(client, bufnr)

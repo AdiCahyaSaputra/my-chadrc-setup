@@ -11,11 +11,8 @@ local opts = {
       filetypes = { "blade" },
     },
     -- null_ls.builtins.formatting.stylua,
-    null_ls.builtins.formatting.prettierd.with {
-      extra_filetypes = { --[[ "blade", ]]
-        "php",
-      },
-    },
+    null_ls.builtins.formatting.prettierd,
+    null_ls.builtins.formatting.phpcsfixer
   },
   on_attach = function(client, bufnr)
     -- if client.supports_method "textDocument/formatting" then

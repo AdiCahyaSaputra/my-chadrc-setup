@@ -10,24 +10,24 @@ M.override = {
     italic = true,
   },
   WinSeparator = {
-    fg = "black2",
+    fg = "yellow",
   },
   Visual = {
     reverse = true
   },
-  -- NormalFloat = {
-  --   bg = "NONE",
-  -- },
-  -- Float = {
-  --   bg = "NONE",
-  -- },
-  -- FloatBorder = {
-  --   bg = "NONE",
-  --   fg = "yellow",
-  -- },
-  -- Normal = {
-  --   bg = "NONE",
-  -- },
+  NormalFloat = {
+    bg = "NONE",
+  },
+  Float = {
+    bg = "NONE",
+  },
+  FloatBorder = {
+    bg = "NONE",
+    fg = "yellow",
+  },
+  Normal = {
+    bg = "NONE",
+  },
   -- St_NormalMode = {
   --   fg = "black",
   --   bg = "one_bg2",
@@ -59,7 +59,7 @@ M.override = {
   -- TbThemeToggleBtn = {
   --   fg = "black",
   --   bg = "one_bg2",
- -- },
+  -- },
   -- NvDashAscii = {
   --   bg = "#000000",
   --   fg = "yellow",
@@ -79,6 +79,9 @@ M.override = {
     fg = "vibrant_green",
     bg = "black2",
   },
+  IlluminatedWordText = { bold = true, bg = 'black2', reverse = false },
+  IlluminatedWordRead = { bold = true, bg = 'black2', reverse = false },
+  IlluminatedWordWrite = { bold = true, bg = 'black2', reverse = false },
   CursorLine = {
     bg = "darker_black",
   },

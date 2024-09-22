@@ -9,11 +9,31 @@ local highlights = require "highlights"
 
 M.ui = {
   tabufline = {
-    order = { "treeOffset", "buffers", "btns" },
+    order = { "treeOffset", "buffers", "custom_tab", "btns" },
+    modules = {
+      custom_tab = function()
+        local btn = require("nvchad.tabufline.utils").btn
+        local fn = vim.fn
+        local result, tabs = "", fn.tabpagenr "$"
+
+        if tabs > 1 then
+          for nr = 1, tabs, 1 do
+            local tab_hl = "TabO" .. (nr == fn.tabpagenr() and "n" or "ff")
+            result = result .. btn(" " .. nr .. " ", tab_hl, "GotoTab", nr)
+          end
+
+          local new_tabtn = btn("  ", "TabNewBtn", "NewTab")
+
+          return new_tabtn .. result
+        end
+
+        return ""
+      end
+    }
   },
   statusline = {
-    theme = "minimal",
-    separator_style = "block",
+    theme = "default",
+    separator_style = "default",
     order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "diagnostics", "filetype", "custom_lsp", "custom_cwd" },
     modules = {
       filetype = function()
@@ -31,7 +51,7 @@ M.ui = {
 
         return ""
       end,
-      custom_cwd = function ()
+      custom_cwd = function()
         local name = vim.loop.cwd()
         name = "%#St_cwd# " .. (name:match "([^/\\]+)[/\\]*$" or name) .. " "
 
@@ -55,20 +75,21 @@ M.ui = {
       "                                                                                                   ",
     },
   },
-  -- theme_toggle = { "yoru", "one_light" },
+  -- theme_toggle = { "gruvbox", "one_light" },
 }
 
 M.base46 = {
-  theme = "yoru",
+  theme = "tokyonight",
   hl_override = highlights.override,
   hl_add = highlights.add,
-  transparency = true,
+  transparency = false,
   lsp_semantic_tokens = false,
   integrations = {
     "hop",
     "trouble",
     "todo",
     "neogit",
+    "vim-illuminate",
   },
 }
 
