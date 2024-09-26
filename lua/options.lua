@@ -8,7 +8,7 @@ local o = vim.o
 opt.wrap = false
 opt.relativenumber = true
 opt.mouse = ""
-opt.cursorline = true
+opt.cursorline = false
 opt.cursorlineopt = "both"
 opt.scrolloff = 20
 
