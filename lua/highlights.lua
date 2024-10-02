@@ -21,44 +21,12 @@ M.override = {
   Float = {
     bg = "NONE",
   },
-  FloatBorder = {
-    bg = "NONE",
-    fg = "yellow",
-  },
-  Normal = {
-    bg = "NONE",
-  },
-  -- St_NormalMode = {
-  --   fg = "black",
-  --   bg = "one_bg2",
+  -- FloatBorder = {
+  --   bg = "NONE",
+  --   fg = "yellow",
   -- },
-  -- St_InsertMode = {
-  --   fg = "black",
-  --   bg = "one_bg2",
-  -- },
-  -- St_VisualMode = {
-  --   fg = "black",
-  --   bg = "one_bg2",
-  -- },
-  -- St_CommandMode = {
-  --   fg = "black",
-  --   bg = "one_bg2",
-  -- },
-  -- TblineFill = {
-  --   bg = "black",
-  -- },
-  -- TbLineBufOn = {
-  --   bg = "darker_black",
-  -- },
-  -- TbLineBufOnClose = {
-  --   bg = "darker_black",
-  -- },
-  -- TbLineBufOnModified = {
-  --   bg = "darker_black",
-  -- },
-  -- TbThemeToggleBtn = {
-  --   fg = "black",
-  --   bg = "one_bg2",
+  -- Normal = {
+  --   bg = "NONE",
   -- },
   -- NvDashAscii = {
   --   bg = "#000000",
@@ -68,13 +36,6 @@ M.override = {
     fg = "NONE",
     bg = "NONE",
   },
-  -- St_cwd = {
-  --   fg = "black",
-  --   bg = "nord_blue",
-  -- },
-  -- NvDashButtons = {
-  --   bg = "NONE",
-  -- },
   Todo = {
     fg = "vibrant_green",
     bg = "black2",

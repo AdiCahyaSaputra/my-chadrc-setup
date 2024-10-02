@@ -16,6 +16,11 @@ opt.scrolloff = 20
 -- o.foldlevel = 99
 -- o.foldexpr = 'nvim_treesitter#foldexpr()'
 
+o.shell = 'C:/Program Files/PowerShell/7/pwsh.exe'
+o.shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command'
+o.shellquote = ''
+o.shellxquote = ''
+
 g.skip_ts_context_commentstring_module = true
 
 vim.cmd "au TextYankPost * silent! lua vim.highlight.on_yank()"
