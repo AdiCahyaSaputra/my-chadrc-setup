@@ -33,7 +33,7 @@ M.ui = {
   },
   statusline = {
     theme = "default",
-    separator_style = "block"
+    separator_style = "default"
   },
   cmp = {
     style = "flat_dark",
@@ -67,7 +67,7 @@ M.nvdash = {
 }
 
 M.base46 = {
-  theme = "solarized_osaka",
+  theme = "yoru",
   hl_override = highlights.override,
   hl_add = highlights.add,
   transparency = false,
@@ -79,6 +79,10 @@ M.base46 = {
     "neogit",
     "vim-illuminate",
   },
+}
+
+M.colorify = {
+  enabled = true
 }
 
 return M

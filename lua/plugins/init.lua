@@ -1,7 +1,6 @@
 local overrides = require "configs.overrides"
 
 return {
-  { "typicode/bg.nvim",   lazy = false,         enabled = false },
   {
     "supermaven-inc/supermaven-nvim",
     config = function()
@@ -10,39 +9,13 @@ return {
     event = "BufReadPost",
     enabled = false,
   },
-  {
-    "code-biscuits/nvim-biscuits",
-    opts = {
-      cursor_line_only = false,
-      default_config = {
-        prefix_string = "  ",
-      },
-      language_config = {
-        dart = {
-          prefix_string = "  ",
-        },
-      },
-    },
-    event = "BufReadPost",
-    config = true,
-    enabled = false
-  },
-  { "tpope/vim-fugitive", event = "BufReadPost" },
-  {
-    "nvim-pack/nvim-spectre",
-    config = function()
-      require "spectre"
-    end,
-    event = "BufReadPost",
-  },
+  { "tpope/vim-fugitive",                    event = "BufReadPost" },
   "NvChad/nvcommunity",
   { import = "nvcommunity.lsp.lspsaga" },
   { import = "nvcommunity.lsp.barbecue" },
   { import = "nvcommunity.motion.hop" },
   { import = "nvcommunity.git.diffview" },
-  { import = "nvcommunity.git.neogit" },
   { import = "nvcommunity.tools.presence",   enabled = false },
-  { import = "nvcommunity.motion.neoscroll" },
   { import = "nvcommunity.folds.ufo" },
   { import = "nvcommunity.editor.illuminate" },
   {
@@ -98,34 +71,6 @@ return {
     end,
   },
   {
-    "karb94/neoscroll.nvim",
-    -- keys = { "<C-d>", "<C-u>" },
-    event = "BufReadPost",
-    opts = {
-      mappings = {
-        "<C-u>",
-        "<C-d>",
-      },
-      hide_cursor = false,
-      respect_scrolloff = true
-    },
-    enabled = false,
-    config = function()
-      local neoscroll = require('neoscroll')
-
-      local keymap = {
-        ["<A-j>"] = function() neoscroll.ctrl_d({ duration = 50 }) end,
-        ["<A-k>"] = function() neoscroll.ctrl_u({ duration = 50 }) end,
-      }
-
-      local modes = { 'n', 'v', 'x' }
-
-      for key, func in pairs(keymap) do
-        vim.keymap.set(modes, key, func)
-      end
-    end
-  },
-  {
     "smoka7/hop.nvim",
     init = function()
       dofile(vim.g.base46_cache .. "hop")
@@ -158,14 +103,6 @@ return {
       }
     end,
     lazy = false
-  },
-  {
-    "LintaoAmons/cd-project.nvim",
-    config = function()
-      require "configs.cd-project"
-    end,
-    event = "VimEnter",
-    enabled = false,
   },
   {
     "nvim-telescope/telescope.nvim",
@@ -275,13 +212,22 @@ return {
     "folke/which-key.nvim",
     enabled = false,
   },
-
   {
     "nvim-telescope/telescope-ui-select.nvim",
     event = "BufReadPost",
     enabled = false,
   },
-
+  {
+    "rachartier/tiny-code-action.nvim",
+    dependencies = {
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-telescope/telescope.nvim" },
+    },
+    event = "LspAttach",
+    config = function()
+      require('tiny-code-action').setup()
+    end
+  },
   {
     "nvimtools/none-ls.nvim",
     event = "BufReadPost",
@@ -289,7 +235,6 @@ return {
       return require "configs.nonels"
     end,
   },
-
   {
     "numToStr/Comment.nvim",
     event = "BufReadPost",

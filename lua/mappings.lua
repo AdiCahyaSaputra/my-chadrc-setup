@@ -162,3 +162,8 @@ for _, mapping in ipairs(terminal_mapping) do
 end
 
 map({ "n", "t" }, "<leader>ft", ":Telescope terms<cr>", { desc = "Find terminal" })
+
+-- [Minty]
+
+-- Normal
+map("i", "<C-M>", function() require('minty.huefy').open() end, { desc = "Minty: open huefy" })

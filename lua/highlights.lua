@@ -9,9 +9,9 @@ M.override = {
   Comment = {
     italic = true,
   },
-  WinSeparator = {
-    fg = "yellow",
-  },
+  -- WinSeparator = {
+  --   fg = "yellow",
+  -- },
   Visual = {
     reverse = true
   },
