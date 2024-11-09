@@ -1,7 +1,3 @@
-local stbufnr = function()
-  return vim.api.nvim_win_get_buf(vim.g.statusline_winid or 0)
-end
-
 ---@class ChadrcConfig
 local M = {}
 
@@ -67,7 +63,7 @@ M.nvdash = {
 }
 
 M.base46 = {
-  theme = "yoru",
+  theme = "jellybeans",
   hl_override = highlights.override,
   hl_add = highlights.add,
   transparency = false,

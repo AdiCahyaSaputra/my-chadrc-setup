@@ -17,6 +17,7 @@ return {
   { import = "nvcommunity.git.diffview" },
   { import = "nvcommunity.tools.presence",   enabled = false },
   { import = "nvcommunity.folds.ufo" },
+  { import = "nvcommunity.motion.neoscroll" },
   { import = "nvcommunity.editor.illuminate" },
   {
     "RRethy/vim-illuminate",
@@ -69,6 +70,32 @@ return {
         eob = " ",
       }
     end,
+  },
+  {
+    "karb94/neoscroll.nvim",
+    event = "BufReadPost",
+    opts = {
+      mappings = {
+        "<C-u>",
+        "<C-d>",
+      },
+      hide_cursor = false,
+      respect_scrolloff = true
+    },
+    config = function()
+      local neoscroll = require('neoscroll')
+
+      local keymap = {
+        ["<A-j>"] = function() neoscroll.ctrl_d({ duration = 20 }) end,
+        ["<A-k>"] = function() neoscroll.ctrl_u({ duration = 20 }) end,
+      }
+
+      local modes = { 'n', 'v', 'x' }
+
+      for key, func in pairs(keymap) do
+        vim.keymap.set(modes, key, func)
+      end
+    end
   },
   {
     "smoka7/hop.nvim",

@@ -9,6 +9,9 @@ M.override = {
   Comment = {
     italic = true,
   },
+  ["@comment"] = {
+    fg = "nord_blue",
+  },
   -- WinSeparator = {
   --   fg = "yellow",
   -- },
@@ -60,6 +63,10 @@ M.override = {
   },
   DiagnosticVirtualTextInfo = {
     bg = "NONE",
+  },
+  TelescopeSelection = {
+    bg = "green",
+    fg = "darker_black"
   },
 }
 
