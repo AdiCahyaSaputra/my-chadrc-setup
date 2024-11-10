@@ -12,9 +12,9 @@ M.override = {
   ["@comment"] = {
     fg = "nord_blue",
   },
-  -- WinSeparator = {
-  --   fg = "yellow",
-  -- },
+  WinSeparator = {
+    fg = "yellow",
+  },
   Visual = {
     reverse = true
   },
