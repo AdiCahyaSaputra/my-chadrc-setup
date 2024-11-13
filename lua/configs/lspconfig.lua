@@ -18,7 +18,8 @@ local servers = {
   "eslint",
   "lua_ls",
   "elixirls",
-  "jsonls"
+  "jsonls",
+  "rust_analyzer"
 }
 
 local on_attach = function(client, bufnr)

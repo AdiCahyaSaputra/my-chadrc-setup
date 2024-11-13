@@ -10,11 +10,11 @@ M.override = {
     italic = true,
   },
   ["@comment"] = {
-    fg = "nord_blue",
+   fg = "nord_blue",
   },
-  WinSeparator = {
-    fg = "yellow",
-  },
+  -- WinSeparator = {
+  --   fg = "yellow",
+  -- },
   Visual = {
     reverse = true
   },
@@ -67,6 +67,9 @@ M.override = {
   TelescopeSelection = {
     bg = "green",
     fg = "darker_black"
+  },
+  St_gitIcons = {
+    fg = "yellow",
   },
 }
 

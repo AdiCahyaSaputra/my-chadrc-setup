@@ -1,6 +1,7 @@
 ---@class ChadrcConfig
 local M = {}
 
+local stl_utils = require "nvchad.stl.utils"
 local highlights = require "highlights"
 
 M.ui = {
@@ -28,8 +29,24 @@ M.ui = {
     }
   },
   statusline = {
-    theme = "default",
-    separator_style = "default"
+    theme = "minimal",
+    separator_style = "block",
+    order = { "mode", "git", "custom_lsp", "lsp_msg", "diagnostics", "%=", "%=", "file", "cwd" },
+    modules = {
+      custom_lsp = function()
+        local bufnr = vim.api.nvim_win_get_buf(vim.g.statusline_winid or 0)
+
+        if rawget(vim, "lsp") then
+          for _, client in ipairs(vim.lsp.get_clients()) do
+            if client.attached_buffers[bufnr] then
+              return (vim.o.columns > 100 and " %#St_lsp# " .. client.name .. " says -> ") or " %#St_lsp# No LSP attached "
+            end
+          end
+        end
+
+        return " %#St_lsp#No LSP attached "
+      end
+    }
   },
   cmp = {
     style = "flat_dark",

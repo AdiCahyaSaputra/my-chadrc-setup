@@ -20,13 +20,13 @@ o.shell = 'C:/Program Files/PowerShell/7/pwsh.exe'
 o.shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command'
 o.shellquote = ''
 o.shellxquote = ''
-o.cmdheight = 0
+-- o.cmdheight = 0
 
 g.skip_ts_context_commentstring_module = true
 
 vim.cmd "au TextYankPost * silent! lua vim.highlight.on_yank()"
-vim.cmd "au RecordingEnter * silent! set cmdheight=1"
-vim.cmd "au RecordingLeave * silent! set cmdheight=0"
+-- vim.cmd "au RecordingEnter * silent! set cmdheight=1"
+-- vim.cmd "au RecordingLeave * silent! set cmdheight=0"
 
 vim.filetype.add {
   pattern = {
