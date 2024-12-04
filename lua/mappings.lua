@@ -47,6 +47,12 @@ map("n", "<leader>fp", ":CdProject<cr>", {
   silent = true,
 })
 
+map("n", "<leader>fm", ":Telescope marks<cr>", {
+  desc = "Telescope: vim marks",
+  nowait = true,
+  silent = true,
+})
+
 -- [Git]
 
 -- Normal

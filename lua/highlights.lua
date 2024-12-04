@@ -12,11 +12,11 @@ M.override = {
   ["@comment"] = {
    fg = "nord_blue",
   },
-  -- WinSeparator = {
-  --   fg = "yellow",
-  -- },
+  WinSeparator = {
+    fg = "grey",
+  },
   Visual = {
-    reverse = true
+    reverse = false
   },
   NormalFloat = {
     bg = "NONE",
@@ -24,17 +24,20 @@ M.override = {
   Float = {
     bg = "NONE",
   },
-  -- FloatBorder = {
-  --   bg = "NONE",
-  --   fg = "yellow",
-  -- },
-  -- Normal = {
-  --   bg = "NONE",
-  -- },
-  -- NvDashAscii = {
-  --   bg = "#000000",
-  --   fg = "yellow",
-  -- },
+  LineNr = {
+    fg = "yellow"
+  },
+  FloatBorder = {
+    bg = "NONE",
+    fg = "yellow",
+  },
+  Normal = {
+    bg = "NONE",
+  },
+  NvDashAscii = {
+    bg = "#000000",
+    fg = "yellow",
+  },
   SagaBorder = {
     fg = "NONE",
     bg = "NONE",

@@ -19,7 +19,9 @@ local servers = {
   "lua_ls",
   "elixirls",
   "jsonls",
-  "rust_analyzer"
+  "rust_analyzer",
+  "angularls",
+  "pyright"
 }
 
 local on_attach = function(client, bufnr)

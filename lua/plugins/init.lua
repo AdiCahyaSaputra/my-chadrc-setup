@@ -73,6 +73,7 @@ return {
   },
   {
     "karb94/neoscroll.nvim",
+    enabled = false,
     event = "BufReadPost",
     opts = {
       mappings = {
@@ -86,8 +87,8 @@ return {
       local neoscroll = require('neoscroll')
 
       local keymap = {
-        ["<A-j>"] = function() neoscroll.ctrl_d({ duration = 20 }) end,
-        ["<A-k>"] = function() neoscroll.ctrl_u({ duration = 20 }) end,
+        ["<A-j>"] = function() neoscroll.ctrl_d({ duration = 10 }) end,
+        ["<A-k>"] = function() neoscroll.ctrl_u({ duration = 10 }) end,
       }
 
       local modes = { 'n', 'v', 'x' }

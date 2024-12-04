@@ -80,7 +80,7 @@ M.nvdash = {
 }
 
 M.base46 = {
-  theme = "jellybeans",
+  theme = "flexoki",
   hl_override = highlights.override,
   hl_add = highlights.add,
   transparency = false,
@@ -91,11 +91,13 @@ M.base46 = {
     "todo",
     "neogit",
     "vim-illuminate",
+    "diffview",
   },
+  enabled = false
 }
 
 M.colorify = {
-  enabled = true
+  enabled = false
 }
 
 return M
