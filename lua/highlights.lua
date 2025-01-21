@@ -10,13 +10,13 @@ M.override = {
     italic = true,
   },
   ["@comment"] = {
-   fg = "nord_blue",
+   fg = "yellow",
   },
   WinSeparator = {
     fg = "grey",
   },
   Visual = {
-    reverse = false
+    reverse = true
   },
   NormalFloat = {
     bg = "NONE",
@@ -35,7 +35,7 @@ M.override = {
     bg = "NONE",
   },
   NvDashAscii = {
-    bg = "#000000",
+    bg = "NONE",
     fg = "yellow",
   },
   SagaBorder = {

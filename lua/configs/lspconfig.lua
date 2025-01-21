@@ -21,7 +21,9 @@ local servers = {
   "jsonls",
   "rust_analyzer",
   "angularls",
-  "pyright"
+  "pyright",
+  "dartls",
+  -- "kotlin_language_server"
 }
 
 local on_attach = function(client, bufnr)

@@ -85,13 +85,16 @@ M.telescope = {
         "rg",
         "--files",
         "--glob",
-        "!{.git/*,.svelte-kit/*,target/*,node_modules/*,.next/*}",
+        "!{.git/*,.svelte-kit/*,target/*,node_modules/*,.next/*,vendor/*,android/*,ios/*,windows/*,linux/*,build/*,.idea/*,.dart_tool/*}",
         "--path-separator",
         "/",
       },
     },
   },
   extensions_list = { "fzf" },
+  defaults = {
+    path_display = { "truncate" }
+  }
 }
 
 M.cmp = {

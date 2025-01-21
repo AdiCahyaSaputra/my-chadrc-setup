@@ -80,7 +80,7 @@ M.nvdash = {
 }
 
 M.base46 = {
-  theme = "flexoki",
+  theme = "melange",
   hl_override = highlights.override,
   hl_add = highlights.add,
   transparency = false,

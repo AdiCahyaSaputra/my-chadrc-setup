@@ -203,6 +203,7 @@ return {
         filetype = "blade",
       }
     end,
+    enabled = true
   },
   {
     "nvim-tree/nvim-tree.lua",
