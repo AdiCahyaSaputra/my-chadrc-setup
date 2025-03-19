@@ -29,7 +29,7 @@ M.override = {
   },
   FloatBorder = {
     bg = "NONE",
-    fg = "yellow",
+    -- fg = "yellow",
   },
   Normal = {
     bg = "NONE",
@@ -49,9 +49,9 @@ M.override = {
   IlluminatedWordText = { bold = true, bg = 'black2', reverse = false },
   IlluminatedWordRead = { bold = true, bg = 'black2', reverse = false },
   IlluminatedWordWrite = { bold = true, bg = 'black2', reverse = false },
-  CursorLine = {
-    bg = "darker_black",
-  },
+  -- CursorLine = {
+  --   bg = "darker_black",
+  -- },
   CmpPmenu = {
     bg = "darker_black",
   },

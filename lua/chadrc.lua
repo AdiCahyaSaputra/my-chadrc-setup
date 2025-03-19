@@ -29,7 +29,7 @@ M.ui = {
     }
   },
   statusline = {
-    theme = "minimal",
+    theme = "default",
     separator_style = "block",
     order = { "mode", "git", "custom_lsp", "lsp_msg", "diagnostics", "%=", "%=", "file", "cwd" },
     modules = {
@@ -80,7 +80,7 @@ M.nvdash = {
 }
 
 M.base46 = {
-  theme = "melange",
+  theme = "solarized_osaka",
   hl_override = highlights.override,
   hl_add = highlights.add,
   transparency = false,

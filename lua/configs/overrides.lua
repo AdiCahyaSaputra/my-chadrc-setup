@@ -99,12 +99,19 @@ M.telescope = {
 
 M.cmp = {
   sources = {
-    { name = "supermaven" },
+    -- { name = "supermaven" },
     { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "buffer" },
     { name = "nvim_lua" },
     { name = "path" },
+  },
+  mapping = {
+    ["<C-Space>"] = function ()
+      print("Trigger completion")
+
+      require "cmp".mapping.complete()
+    end,
   },
 }
 

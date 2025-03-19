@@ -23,6 +23,8 @@ local servers = {
   "angularls",
   "pyright",
   "dartls",
+  "biome",
+  "svelte"
   -- "kotlin_language_server"
 }
 
@@ -31,6 +33,18 @@ local on_attach = function(client, bufnr)
 
   local function opts(desc)
     return { buffer = bufnr, desc = desc }
+  end
+
+  -- https://github.com/sveltejs/language-tools/issues/2008#issuecomment-1539788464
+  if client.name == "svelte" then
+    vim.api.nvim_create_autocmd("BufWritePost", {
+      pattern = { ".js", ".ts" },
+      group = vim.api.nvim_create_augroup("svelte_ondidchangetsorjsfile", { clear = true }),
+      callback = function(ctx)
+        -- Here use ctx.match instead of ctx.file
+        client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
+      end,
+    })
   end
 
   -- vim.keymap.set

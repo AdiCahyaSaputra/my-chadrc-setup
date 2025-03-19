@@ -9,6 +9,19 @@ return {
     event = "BufReadPost",
     enabled = false,
   },
+  {
+    "Exafunction/codeium.nvim",
+    config = function()
+      require("codeium").setup({
+        enable_cmp_source = false,
+        virtual_text = {
+          enabled = true,
+          text = "🦾",
+        }
+      })
+    end,
+    event = "BufReadPost",
+  },
   { "tpope/vim-fugitive",                    event = "BufReadPost" },
   "NvChad/nvcommunity",
   { import = "nvcommunity.lsp.lspsaga" },
@@ -73,7 +86,7 @@ return {
   },
   {
     "karb94/neoscroll.nvim",
-    enabled = false,
+    enabled = true,
     event = "BufReadPost",
     opts = {
       mappings = {
