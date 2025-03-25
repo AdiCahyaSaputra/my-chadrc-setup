@@ -16,7 +16,10 @@ return {
         enable_cmp_source = false,
         virtual_text = {
           enabled = true,
-          text = "🦾",
+          text = "🤖",
+          key_bindings = {
+            accept = "<C-n>",
+          }
         }
       })
     end,

@@ -100,6 +100,7 @@ M.telescope = {
 M.cmp = {
   sources = {
     -- { name = "supermaven" },
+    { name = "codeium" },
     { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "buffer" },
