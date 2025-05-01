@@ -10,7 +10,7 @@ opt.relativenumber = true
 opt.mouse = ""
 opt.cursorline = true
 opt.cursorlineopt = "both"
-opt.scrolloff = 15
+opt.scrolloff = 30
 
 -- o.foldmethod = 'indent'
 -- o.foldlevel = 99

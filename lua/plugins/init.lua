@@ -23,7 +23,8 @@ return {
         }
       })
     end,
-    event = "BufReadPost",
+    event = "InsertEnter",
+    enabled = false
   },
   { "tpope/vim-fugitive",                    event = "BufReadPost" },
   "NvChad/nvcommunity",
