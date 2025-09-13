@@ -15,9 +15,9 @@ M.override = {
   WinSeparator = {
     fg = "grey",
   },
-  Visual = {
-    reverse = true
-  },
+  -- Visual = {
+  --   reverse = true
+  -- },
   NormalFloat = {
     bg = "NONE",
   },

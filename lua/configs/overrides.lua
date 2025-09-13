@@ -108,11 +108,26 @@ M.cmp = {
     { name = "path" },
   },
   mapping = {
-    ["<C-Space>"] = function ()
+    ["<C-Space>"] = function()
       print("Trigger completion")
 
       require "cmp".mapping.complete()
     end,
+    ["<Down>"] = require "cmp".mapping(function(fallback)
+      if require "cmp".visible() then
+        require "cmp".select_next_item()
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+
+    ["<Up>"] = require "cmp".mapping(function(fallback)
+      if require "cmp".visible() then
+        require "cmp".select_prev_item()
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
   },
 }
 

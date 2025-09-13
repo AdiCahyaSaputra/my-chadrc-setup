@@ -1,6 +1,16 @@
 local overrides = require "configs.overrides"
 
 return {
+  { 'augmentcode/augment.vim', event = "BufReadPost" },
+  {
+    "sphamba/smear-cursor.nvim",
+    opts = {
+      stiffness = 0.4,
+      trailing_stiffness = 0.2,
+      damping = 0.6
+    },
+    lazy = false
+  },
   {
     "supermaven-inc/supermaven-nvim",
     config = function()
@@ -26,7 +36,7 @@ return {
     event = "InsertEnter",
     enabled = false
   },
-  { "tpope/vim-fugitive",                    event = "BufReadPost" },
+  { "tpope/vim-fugitive",      event = "BufReadPost" },
   "NvChad/nvcommunity",
   { import = "nvcommunity.lsp.lspsaga" },
   { import = "nvcommunity.lsp.barbecue" },
@@ -104,8 +114,8 @@ return {
       local neoscroll = require('neoscroll')
 
       local keymap = {
-        ["<A-j>"] = function() neoscroll.ctrl_d({ duration = 10 }) end,
-        ["<A-k>"] = function() neoscroll.ctrl_u({ duration = 10 }) end,
+        ["<A-j>"] = function() neoscroll.ctrl_d({ duration = 40 }) end,
+        ["<A-k>"] = function() neoscroll.ctrl_u({ duration = 40 }) end,
       }
 
       local modes = { 'n', 'v', 'x' }
