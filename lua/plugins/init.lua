@@ -3,6 +3,12 @@ local overrides = require "configs.overrides"
 return {
   { 'augmentcode/augment.vim', event = "BufReadPost" },
   {
+    'chomosuke/typst-preview.nvim',
+    ft = 'typst',
+    version = '1.*',
+    opts = {},    -- lazy.nvim will implicitly calls `setup {}`
+  },
+  {
     "sphamba/smear-cursor.nvim",
     opts = {
       stiffness = 0.4,

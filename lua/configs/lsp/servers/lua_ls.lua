@@ -1,6 +1,6 @@
 return {
   setup = function(on_attach, on_init, capabilities)
-    local lspconfig = require("lspconfig")
+    local lspconfig = require('lspconfig')
 
     lspconfig.lua_ls.setup({
       on_attach = on_attach,
