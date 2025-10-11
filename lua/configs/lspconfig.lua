@@ -10,8 +10,8 @@ local servers = {
   "cssls",
   "ts_ls",
   -- "vtsls",
-  "volar",
-  "clangd",
+  -- "volar",
+  -- "clangd",
   "intelephense",
   "prismals",
   "bashls",
@@ -67,19 +67,13 @@ local on_attach = function(client, bufnr)
   map("n", "<leader>ra", ":Lspsaga rename<cr>", opts "LSP: Rename variable")
 end
 
-for _, lsp in ipairs(servers) do
-  -- DEPRECATED SINCE NVIM 0.11.0
-  -- local server_config_ok, mod = pcall(require, "configs.lsp.servers." .. lsp)
-  -- if server_config_ok then
-  --   mod.setup(on_attach, nv_on_init, nv_capabilities)
-  -- end
+vim.lsp.config('*', {
+  on_attach = on_attach,
+  on_init = nv_on_init,
+  capabilities = nv_capabilities,
+})
 
-  vim.lsp.config(lsp, {
-    on_attach = on_attach,
-    on_init = nv_on_init,
-    capabilities = nv_capabilities,
-  })
-end
+vim.lsp.enable(servers)
 
 -- configs.blade = {
 --   default_config = {
