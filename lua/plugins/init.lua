@@ -50,7 +50,7 @@ return {
   { import = "nvcommunity.git.diffview" },
   { import = "nvcommunity.tools.presence",   enabled = false },
   { import = "nvcommunity.folds.ufo" },
-  { import = "nvcommunity.motion.neoscroll" },
+  { import = "nvcommunity.motion.neoscroll", enabled = false },
   { import = "nvcommunity.editor.illuminate" },
   {
     "RRethy/vim-illuminate",

@@ -68,10 +68,17 @@ local on_attach = function(client, bufnr)
 end
 
 for _, lsp in ipairs(servers) do
-  local server_config_ok, mod = pcall(require, "configs.lsp.servers." .. lsp)
-  if server_config_ok then
-    mod.setup(on_attach, nv_on_init, nv_capabilities)
-  end
+  -- DEPRECATED SINCE NVIM 0.11.0
+  -- local server_config_ok, mod = pcall(require, "configs.lsp.servers." .. lsp)
+  -- if server_config_ok then
+  --   mod.setup(on_attach, nv_on_init, nv_capabilities)
+  -- end
+
+  vim.lsp.config(lsp, {
+    on_attach = on_attach,
+    on_init = nv_on_init,
+    capabilities = nv_capabilities,
+  })
 end
 
 -- configs.blade = {
