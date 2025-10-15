@@ -1,6 +1,5 @@
 local map = vim.keymap.set
 
-local nv_on_attach = require("nvchad.configs.lspconfig").on_attach
 local nv_on_init = require("nvchad.configs.lspconfig").on_init
 local nv_capabilities = require("nvchad.configs.lspconfig").capabilities
 
@@ -28,67 +27,58 @@ local servers = {
   -- "kotlin_language_server"
 }
 
-local on_attach = function(client, bufnr)
-  nv_on_attach(client, bufnr) -- default nvchad on_attach func
+vim.lsp.config("*", {
+  on_attach = on_attach,
+  on_init = nv_on_init,
+  capabilities = nv_capabilities,
+})
+vim.lsp.enable(servers)
 
-  local function opts(desc)
-    return { buffer = bufnr, desc = desc }
-  end
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('my.lsp', {}),
+  callback = function(args)
+    local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 
-  -- https://github.com/sveltejs/language-tools/issues/2008#issuecomment-1539788464
-  if client.name == "svelte" then
-    vim.api.nvim_create_autocmd("BufWritePost", {
-      pattern = { ".js", ".ts" },
-      group = vim.api.nvim_create_augroup("svelte_ondidchangetsorjsfile", { clear = true }),
-      callback = function(ctx)
-        -- Here use ctx.match instead of ctx.file
-        client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
-      end,
-    })
-  end
+    if client.name == "svelte" then
+      vim.api.nvim_create_autocmd("BufWritePost", {
+        pattern = { ".js", ".ts" },
+        group = vim.api.nvim_create_augroup("svelte_ondidchangetsorjsfile", { clear = true }),
+        callback = function(ctx)
+          -- Here use ctx.match instead of ctx.file
+          client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
+        end,
+      })
+    end
 
-  -- vim.keymap.set
-  map("n", "<leader>dh", function()
-    vim.diagnostic.goto_prev()
-  end, opts "LSP: Prev diagnostic")
-  map("n", "<leader>dl", function()
-    vim.diagnostic.goto_next()
-  end, opts "LSP: Next diagnostic")
-  map("n", "<leader>lf", function()
-    vim.lsp.buf.format { async = true }
-  end, opts "LSP: Format with lsp")
-  map("n", "gd", function()
-    require("telescope.builtin").lsp_definitions()
-  end, opts "LSP: Goto Definition")
-  map({ "n", "v" }, "<leader>ca", function()
-    require('tiny-code-action').code_action()
-  end, opts "LSP: Code action")
-  map("n", "K", ":Lspsaga hover_doc<cr>", opts "Hover doc")
-  map("n", "<leader>ra", ":Lspsaga rename<cr>", opts "LSP: Rename variable")
-end
+    -- vim.keymap.set
+    map("n", "<leader>dh", function()
+      vim.diagnostic.goto_prev()
+    end)
+    map("n", "<leader>dl", function()
+      vim.diagnostic.goto_next()
+    end)
+    map("n", "<leader>lf", function()
+      vim.lsp.buf.format { async = true }
+    end)
+    map("n", "gd", function()
+      require("telescope.builtin").lsp_definitions()
+    end)
+    map({ "n", "v" }, "<leader>ca", function()
+      require('tiny-code-action').code_action()
+    end)
+    map("n", "K", ":Lspsaga hover_doc<cr>")
+    map("n", "<leader>ra", ":Lspsaga rename<cr>")
 
-for _, lsp in ipairs(servers) do
-  local server_config_ok, mod = pcall(require, "configs.lsp.servers." .. lsp)
-  if server_config_ok then
-    mod.setup(on_attach, nv_on_init, nv_capabilities)
-  end
-end
-
--- configs.blade = {
---   default_config = {
---     cmd = { "../tools/laravel-dev-tools", "lsp" },
---     filetypes = { "blade" },
---     root_dir = function(fname)
---       return lspconfig.util.find_git_ancestor(fname)
---     end,
---     settings = {},
---   },
--- }
---
--- lspconfig.blade.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
--- }
-
---
--- lspconfig.pyright.setup { blabla}
+    -- Auto-format ("lint") on save.
+    -- Usually not needed if server supports "textDocument/willSaveWaitUntil".
+    if not client:supports_method('textDocument/willSaveWaitUntil') and client:supports_method('textDocument/formatting') then
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
+        buffer = args.buf,
+        callback = function()
+          vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000, async = true })
+        end,
+      })
+    end
+  end,
+})
