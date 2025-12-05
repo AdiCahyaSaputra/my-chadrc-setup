@@ -1,8 +1,6 @@
 local null_ls = require "null-ls"
 
-local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
-local event = "BufWritePre"
-local async = event == "BufWritePost"
+local group = vim.api.nvim_create_augroup("my.nonels", { clear = false })
 
 local opts = {
   sources = {
@@ -15,23 +13,15 @@ local opts = {
     null_ls.builtins.formatting.phpcsfixer
   },
   on_attach = function(client, bufnr)
-    -- if client.supports_method "textDocument/formatting" then
-    --   -- format on save
-    --   vim.api.nvim_clear_autocmds { buffer = bufnr, group = group }
-    --   vim.api.nvim_create_autocmd(event, {
-    --     buffer = bufnr,
-    --     group = group,
-    --     callback = function()
-    --       vim.lsp.buf.format { bufnr = vim.api.nvim_get_current_buf(), timeout_ms = 2000 }
-    --     end,
-    --     desc = "[lsp] format on save",
-    --   })
-    -- end
-
-    if client.supports_method "textDocument/rangeFormatting" then
-      vim.keymap.set("x", "<Leader>lf", function()
-        vim.lsp.buf.format { bufnr = vim.api.nvim_get_current_buf() }
-      end, { buffer = bufnr, desc = "[lsp] format" })
+    if client.supports_method("textDocument/formatting") then
+      vim.api.nvim_clear_autocmds({ group = group, buffer = bufnr })
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = group,
+        buffer = bufnr,
+        callback = function()
+          vim.lsp.buf.format({ async = false })
+        end,
+      })
     end
   end,
 }

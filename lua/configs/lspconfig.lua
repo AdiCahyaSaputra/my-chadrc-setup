@@ -8,6 +8,7 @@ local servers = {
   "csharp_ls",
   "cssls",
   "ts_ls",
+  "gopls",
   -- "vtsls",
   -- "volar",
   -- "clangd",
@@ -28,7 +29,6 @@ local servers = {
 }
 
 vim.lsp.config("*", {
-  on_attach = on_attach,
   on_init = nv_on_init,
   capabilities = nv_capabilities,
 })
@@ -76,7 +76,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
         buffer = args.buf,
         callback = function()
-          vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000, async = true })
+          vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
         end,
       })
     end

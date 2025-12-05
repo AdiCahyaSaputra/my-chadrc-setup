@@ -6,7 +6,7 @@ return {
     'chomosuke/typst-preview.nvim',
     ft = 'typst',
     version = '1.*',
-    opts = {},    -- lazy.nvim will implicitly calls `setup {}`
+    opts = {}, -- lazy.nvim will implicitly calls `setup {}`
   },
   {
     "sphamba/smear-cursor.nvim",
@@ -15,7 +15,8 @@ return {
       trailing_stiffness = 0.2,
       damping = 0.6
     },
-    lazy = false
+    lazy = false,
+    enabled = false
   },
   {
     "supermaven-inc/supermaven-nvim",
@@ -106,7 +107,7 @@ return {
   },
   {
     "karb94/neoscroll.nvim",
-    enabled = true,
+    enabled = false,
     event = "BufReadPost",
     opts = {
       mappings = {
