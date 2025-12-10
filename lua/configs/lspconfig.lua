@@ -15,7 +15,7 @@ local servers = {
   "intelephense",
   "prismals",
   "bashls",
-  "eslint",
+  -- "eslint",
   "lua_ls",
   "elixirls",
   "jsonls",
