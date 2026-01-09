@@ -39,7 +39,8 @@ M.ui = {
         if rawget(vim, "lsp") then
           for _, client in ipairs(vim.lsp.get_clients()) do
             if client.attached_buffers[bufnr] then
-              return (vim.o.columns > 100 and " %#St_lsp# " .. client.name .. " says -> ") or " %#St_lsp# No LSP attached "
+              return (vim.o.columns > 100 and " %#St_lsp# " .. client.name .. " says -> ") or
+                  " %#St_lsp# No LSP attached "
             end
           end
         end
@@ -69,6 +70,10 @@ M.nvdash = {
     "           NvChad          ",
     "                            ",
   },
+}
+
+M.lsp = {
+  signature = true
 }
 
 M.base46 = {

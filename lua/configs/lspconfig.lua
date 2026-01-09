@@ -11,7 +11,7 @@ local servers = {
   "gopls",
   -- "vtsls",
   -- "volar",
-  -- "clangd",
+  "clangd",
   "intelephense",
   "prismals",
   "bashls",
